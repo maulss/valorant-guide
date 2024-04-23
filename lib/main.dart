@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:valorant_documentation/constant/color_constant.dart';
+import 'package:valorant_documentation/constant/font_style_constant.dart';
+
+import 'package:valorant_documentation/pages/agents_page.dart';
+import 'package:valorant_documentation/pages/home_page.dart';
+import 'package:valorant_documentation/pages/maps_page.dart';
+import 'package:valorant_documentation/pages/ranks_page.dart';
+import 'package:valorant_documentation/pages/weapons_page.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: ColorConstant.background,
+        appBarTheme: AppBarTheme(
+          titleTextStyle: FontStyleConstant.bowlbyOneSC,
+          backgroundColor: ColorConstant.background,
+          centerTitle: true,
+          iconTheme: IconThemeData(
+            size: 28,
+            color: ColorConstant.red,
+          ),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/agents': (context) => const AgentsPage(),
+        '/weapons': (context) => const WeaponsPage(),
+        '/maps': (context) => const MapsPage(),
+        '/ranks': (context) => const RanksPage(),
+      },
+    );
+  }
+}
