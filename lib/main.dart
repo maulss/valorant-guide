@@ -4,8 +4,14 @@ import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 import 'package:valorant_documentation/pages/agents_page.dart';
 import 'package:valorant_documentation/pages/detail_agents_page.dart';
+import 'package:valorant_documentation/pages/detail_maps_page.dart';
+import 'package:valorant_documentation/pages/detail_ranks_page.dart';
+import 'package:valorant_documentation/pages/detail_weapons_page.dart';
+import 'package:valorant_documentation/pages/detail_weapons_skin_page.dart';
+import 'package:valorant_documentation/pages/gunbuudies_page.dart';
 import 'package:valorant_documentation/pages/home_page.dart';
 import 'package:valorant_documentation/pages/maps_page.dart';
+import 'package:valorant_documentation/pages/player_cards_page.dart';
 import 'package:valorant_documentation/pages/ranks_page.dart';
 import 'package:valorant_documentation/pages/weapons_page.dart';
 import 'package:valorant_documentation/provider/home_provider.dart';
@@ -33,7 +39,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: ColorConstant.background,
           appBarTheme: AppBarTheme(
-            titleTextStyle: FontStyleConstant.bowlbyOneSC,
+            titleTextStyle: FontStyleConstant.bowlbyOneSCTitlePage,
             backgroundColor: ColorConstant.background,
             centerTitle: true,
             iconTheme: IconThemeData(
@@ -49,8 +55,14 @@ class MyApp extends StatelessWidget {
           '/agents': (context) => const AgentsPage(),
           '/agent_details': (context) => const DetailAgentsPage(),
           '/weapons': (context) => const WeaponsPage(),
+          '/weapons_details': (context) => const DetailweaponsPage(),
+          '/weapons_skin_details': (context) => const DetailweaponsSkinPage(),
           '/maps': (context) => const MapsPage(),
+          '/maps_detail': (context) => const DetailMapsPage(),
           '/ranks': (context) => const RanksPage(),
+          '/ranks_detail': (context) => const DetailRanksPage(),
+          '/player_cards': (context) => const PlayerCardsPage(),
+          '/gunbuddies': (context) => const GunBuddiesPage(),
         },
       ),
     );

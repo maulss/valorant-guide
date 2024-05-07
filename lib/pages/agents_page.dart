@@ -28,13 +28,6 @@ class _AgentsPageState extends State<AgentsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          TextButton(
-              onPressed: () {
-                agentsService.getDetailAgent(3);
-              },
-              child: Text('Test'))
-        ],
         title: const Text("Agents"),
       ),
       body: SingleChildScrollView(
@@ -44,7 +37,7 @@ class _AgentsPageState extends State<AgentsPage> {
               padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
               child: TextFormField(
                 // onChanged: (value) => homeProvider.runFilter(value),
-                style: FontStyleConstant.bowlbyOneSC
+                style: FontStyleConstant.bowlbyOneSCDescription
                     .copyWith(fontSize: 12, color: ColorConstant.red),
                 cursorColor: ColorConstant.red,
                 // controller: serachController,
@@ -52,7 +45,7 @@ class _AgentsPageState extends State<AgentsPage> {
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: ColorConstant.red),
                   ),
-                  hintStyle: FontStyleConstant.bowlbyOneSC
+                  hintStyle: FontStyleConstant.bowlbyOneSCDescription
                       .copyWith(color: ColorConstant.red, fontSize: 13),
                   prefixIcon: const Icon(Icons.search),
                   prefixIconColor: ColorConstant.red,
@@ -81,23 +74,22 @@ class _AgentsPageState extends State<AgentsPage> {
                     ? Center(
                         child: Text(
                           "${agentsService.errorAgents}",
-                          style: FontStyleConstant.bowlbyOneSC,
+                          style: FontStyleConstant.bowlbyOneSCTitlePage,
                         ),
                       )
                     : agentsService.agents.isEmpty
                         ? Center(
                             child: Text(
                               "Agents Kosong",
-                              style: FontStyleConstant.bowlbyOneSC,
+                              style: FontStyleConstant.bowlbyOneSCTitlePage,
                             ),
                           )
                         : Consumer<AgentsService>(
                             builder: (context, value, child) {
                               return CarouselSlider.builder(
-                                itemCount: agentsService.agents.length,
+                                itemCount: value.agents.length,
                                 itemBuilder: (context, index, realIndex) {
-                                  final agentsData =
-                                      agentsService.agents[index];
+                                  final agentsData = value.agents[index];
                                   return Builder(
                                     builder: (BuildContext context) {
                                       return GestureDetector(
@@ -149,7 +141,7 @@ class _AgentsPageState extends State<AgentsPage> {
                                                         agentsData[
                                                             'displayName'],
                                                         style: FontStyleConstant
-                                                            .bowlbyOneSC
+                                                            .bowlbyOneSCDescription
                                                             .copyWith(
                                                           fontSize: 50,
                                                           letterSpacing: 3,

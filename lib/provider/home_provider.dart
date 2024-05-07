@@ -6,7 +6,8 @@ class HomeProvider with ChangeNotifier {
     "Weapons",
     "Maps",
     "Ranks",
-    "PLayer\nCards"
+    "PLayer\nCards",
+    "Gun\nBuddies"
   ];
 
   HomeProvider() {

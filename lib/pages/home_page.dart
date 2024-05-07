@@ -9,23 +9,23 @@ import 'package:valorant_documentation/provider/home_provider.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  List<String> listImageHomePage = [
-    'assets/images/agents.png',
-    'assets/images/weapons.png',
-    'assets/images/maps.png',
-    'assets/images/ranks.png',
-    'assets/images/player cards.png',
-  ];
+  // Tambahkan gambar terkait item ke dalam peta (map).
+  Map<String, Map<String, String>> pageMap = {
+    "Agents": {'route': '/agents', 'image': 'assets/images/agents.png'},
+    "Weapons": {'route': '/weapons', 'image': 'assets/images/weapons.png'},
+    "Maps": {'route': '/maps', 'image': 'assets/images/maps.png'},
+    "Ranks": {'route': '/ranks', 'image': 'assets/images/ranks.png'},
+    "PLayer\nCards": {
+      'route': '/player_cards',
+      'image': 'assets/images/player cards.png'
+    },
+    "Gun\nBuddies": {
+      'route': '/gunbuddies',
+      'image': 'assets/images/gunbuddies.png'
+    },
+  };
 
-  List<String> listPage = [
-    '/agents',
-    '/weapons',
-    '/maps',
-    '/ranks',
-    '/playerCards'
-  ];
-
-  TextEditingController serachController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +41,15 @@ class HomePage extends StatelessWidget {
             children: [
               TextFormField(
                 onChanged: (value) => homeProvider.runFilter(value),
-                style: FontStyleConstant.bowlbyOneSC
+                style: FontStyleConstant.bowlbyOneSCDescription
                     .copyWith(fontSize: 12, color: ColorConstant.red),
                 cursorColor: ColorConstant.red,
-                controller: serachController,
+                controller: searchController,
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: ColorConstant.red),
                   ),
-                  hintStyle: FontStyleConstant.bowlbyOneSC
+                  hintStyle: FontStyleConstant.bowlbyOneSCDescription
                       .copyWith(color: ColorConstant.red, fontSize: 13),
                   prefixIcon: const Icon(Icons.search),
                   prefixIconColor: ColorConstant.red,
@@ -70,10 +70,15 @@ class HomePage extends StatelessWidget {
                         itemCount: homeProvider.filteredList.length,
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              listPage[index],
-                            );
+                            String currentItem =
+                                homeProvider.filteredList[index];
+                            String? routeName = pageMap[currentItem]?['route'];
+                            if (routeName != null) {
+                              Navigator.pushNamed(context, routeName);
+                            } else {
+                              // Tambahkan tindakan jika tidak ada routeName yang sesuai
+                              print('Route not found for: $currentItem');
+                            }
                           },
                           child: Container(
                             margin: const EdgeInsets.only(bottom: 29.5),
@@ -83,27 +88,36 @@ class HomePage extends StatelessWidget {
                               border: Border.all(
                                   color: ColorConstant.red, width: 2),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            child: Stack(
                               children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 183,
-                                  height: 139,
-                                  child: Text(
-                                    homeProvider.filteredList[index],
-                                    style: FontStyleConstant.bowlbyOneSC
-                                        .copyWith(fontSize: 28),
+                                // Gunakan gambar berdasarkan item yang disaring
+                                Transform.translate(
+                                  offset: const Offset(200, 0),
+                                  child: SizedBox(
+                                    width: 180,
+                                    height: 138,
+                                    child: Image.asset(
+                                      pageMap[homeProvider.filteredList[index]]
+                                              ?['image'] ??
+                                          '',
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 183,
-                                  height: 139,
-                                  child: Image.asset(
-                                    listImageHomePage[index],
-                                    fit: BoxFit.contain,
+                                Transform.translate(
+                                  offset: const Offset(10, 0),
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width: 180,
+                                    height: 138,
+                                    child: Text(
+                                      homeProvider.filteredList[index],
+                                      style: FontStyleConstant
+                                          .bowlbyOneSCTitlePage
+                                          .copyWith(fontSize: 29),
+                                    ),
                                   ),
-                                ),
+                                )
                               ],
                             ),
                           ),
@@ -112,7 +126,7 @@ class HomePage extends StatelessWidget {
                     : Center(
                         child: Text(
                           "Data Not Found",
-                          style: FontStyleConstant.bowlbyOneSC
+                          style: FontStyleConstant.bowlbyOneSCTitlePage
                               .copyWith(fontSize: 30),
                         ),
                       ),
