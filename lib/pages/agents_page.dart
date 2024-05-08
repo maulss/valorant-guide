@@ -22,6 +22,8 @@ class _AgentsPageState extends State<AgentsPage> {
     super.initState();
   }
 
+  TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final agentsService = Provider.of<AgentsService>(context);
@@ -36,11 +38,11 @@ class _AgentsPageState extends State<AgentsPage> {
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
               child: TextFormField(
-                // onChanged: (value) => homeProvider.runFilter(value),
+                onChanged: (value) => agentsService.searchAgents(value),
                 style: FontStyleConstant.bowlbyOneSCDescription
                     .copyWith(fontSize: 12, color: ColorConstant.red),
                 cursorColor: ColorConstant.red,
-                // controller: serachController,
+                controller: searchController,
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: ColorConstant.red),
@@ -84,12 +86,12 @@ class _AgentsPageState extends State<AgentsPage> {
                               style: FontStyleConstant.bowlbyOneSCTitlePage,
                             ),
                           )
-                        : Consumer<AgentsService>(
-                            builder: (context, value, child) {
-                              return CarouselSlider.builder(
-                                itemCount: value.agents.length,
+                        : agentsService.filteredAgents.isNotEmpty
+                            ? CarouselSlider.builder(
+                                itemCount: agentsService.filteredAgents.length,
                                 itemBuilder: (context, index, realIndex) {
-                                  final agentsData = value.agents[index];
+                                  final agentsData =
+                                      agentsService.filteredAgents[index];
                                   return Builder(
                                     builder: (BuildContext context) {
                                       return GestureDetector(
@@ -169,9 +171,14 @@ class _AgentsPageState extends State<AgentsPage> {
                                   enlargeFactor: 0.3,
                                   scrollDirection: Axis.horizontal,
                                 ),
-                              );
-                            },
-                          ),
+                              )
+                            : Center(
+                                child: Text(
+                                  "Data Not Found",
+                                  style: FontStyleConstant.bowlbyOneSCTitlePage
+                                      .copyWith(fontSize: 30),
+                                ),
+                              ),
           ],
         ),
       ),

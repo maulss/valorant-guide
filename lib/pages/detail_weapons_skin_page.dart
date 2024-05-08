@@ -14,23 +14,23 @@ class DetailweaponsSkinPage extends StatefulWidget {
 class _DetailweaponsSkinPageState extends State<DetailweaponsSkinPage> {
   late VideoPlayerController _controller;
 
-  @override
-  void initState() {
-    super.initState();
-    _initializeVideoPlayer();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _initializeVideoPlayer();
+  // }
 
-  void _initializeVideoPlayer() async {
-    try {
-      _controller =
-          VideoPlayerController.asset('assets/images/contoh_video.mp4')
-            ..initialize().then((_) {
-              setState(() {});
-            });
-    } catch (e) {
-      print('Failed to initialize video player: $e');
-    }
-  }
+  // void _initializeVideoPlayer() async {
+  //   try {
+  //     _controller =
+  //         VideoPlayerController.asset('assets/images/contoh_video.mp4')
+  //           ..initialize().then((_) {
+  //             setState(() {});
+  //           });
+  //   } catch (e) {
+  //     print('Failed to initialize video player: $e');
+  //   }
+  // }
 
   @override
   void dispose() {
