@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
+import 'package:valorant_documentation/service/weapons_service.dart';
 
 class DetailweaponsPage extends StatelessWidget {
   const DetailweaponsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final detailWeapon = Provider.of<WeaponsService>(context);
+    int shotDistance =
+        detailWeapon.weaponsDetail["weaponStats"]["damageRanges"].length;
+    Offset displayShotStats() {
+      if (shotDistance == 1) {
+        return const Offset(125, 0);
+      } else if (shotDistance == 2) {
+        return const Offset(65, 0);
+      } else {
+        return const Offset(5, 0);
+      }
+    }
+
     return Scaffold(
       backgroundColor: ColorConstant.red,
       body: SafeArea(
@@ -43,7 +58,8 @@ class DetailweaponsPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, top: 40),
                 child: Center(
-                  child: Image.asset("assets/images/vandal.png"),
+                  child: Image.network(
+                      "${detailWeapon.weaponsDetail['displayIcon']}"),
                 ),
               ),
               Transform.translate(
@@ -52,7 +68,7 @@ class DetailweaponsPage extends StatelessWidget {
                   height: 20,
                   width: 80,
                   child: Text(
-                    "\$ 2900",
+                    "\$ ${detailWeapon.weaponsDetail["shopData"]["cost"]}",
                     style: FontStyleConstant.bowlbyOneSCTitlePage
                         .copyWith(fontSize: 17, color: ColorConstant.darkRed),
                   ),
@@ -64,14 +80,14 @@ class DetailweaponsPage extends StatelessWidget {
                   height: 80,
                   width: 400,
                   child: Text(
-                    "Vandal",
+                    "${detailWeapon.weaponsDetail["displayName"]}",
                     style: FontStyleConstant.bowlbyOneSCTitlePage
                         .copyWith(fontSize: 50),
                   ),
                 ),
               ),
               Container(
-                height: 540,
+                height: 575,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: ColorConstant.background,
@@ -84,7 +100,7 @@ class DetailweaponsPage extends StatelessWidget {
                   children: [
                     Center(
                       child: Transform.translate(
-                        offset: const Offset(0, -250),
+                        offset: const Offset(0, -270),
                         child: Container(
                           height: 5,
                           width: 60,
@@ -147,7 +163,7 @@ class DetailweaponsPage extends StatelessWidget {
                                   height: 20,
                                   width: 80,
                                   child: Text(
-                                    "13",
+                                    "${detailWeapon.weaponsDetail["weaponStats"]["fireRate"]}",
                                     style: FontStyleConstant
                                         .bowlbyOneSCDescription,
                                   )),
@@ -155,7 +171,8 @@ class DetailweaponsPage extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 height: 20,
                                 width: 160,
-                                child: Text("heavy weapons",
+                                child: Text(
+                                    "${detailWeapon.weaponsDetail["shopData"]["category"]}",
                                     style: FontStyleConstant
                                         .bowlbyOneSCDescription),
                               ),
@@ -163,7 +180,8 @@ class DetailweaponsPage extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 height: 20,
                                 width: 90,
-                                child: Text("50",
+                                child: Text(
+                                    "${detailWeapon.weaponsDetail["weaponStats"]["magazineSize"]}",
                                     style: FontStyleConstant
                                         .bowlbyOneSCDescription),
                               ),
@@ -218,7 +236,7 @@ class DetailweaponsPage extends StatelessWidget {
                                   height: 20,
                                   width: 80,
                                   child: Text(
-                                    "2.5 secs",
+                                    "${detailWeapon.weaponsDetail["weaponStats"]["reloadTimeSeconds"]} secs",
                                     style: FontStyleConstant
                                         .bowlbyOneSCDescription,
                                   )),
@@ -226,7 +244,8 @@ class DetailweaponsPage extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 height: 20,
                                 width: 160,
-                                child: Text("0.25",
+                                child: Text(
+                                    "${detailWeapon.weaponsDetail["weaponStats"]["firstBulletAccuracy"]}",
                                     style: FontStyleConstant
                                         .bowlbyOneSCDescription),
                               ),
@@ -234,14 +253,15 @@ class DetailweaponsPage extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 height: 20,
                                 width: 90,
-                                child: Text("0.8",
+                                child: Text(
+                                    "${detailWeapon.weaponsDetail["weaponStats"]["runSpeedMultiplier"]}",
                                     style: FontStyleConstant
                                         .bowlbyOneSCDescription),
                               ),
                             ],
                           ),
                           const SizedBox(
-                            height: 25,
+                            height: 30,
                           ),
                           Text(
                             "Damage",
@@ -256,73 +276,78 @@ class DetailweaponsPage extends StatelessWidget {
                             width: double.infinity,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount:
-                                  1, // Ubah ini sesuai jumlah item yang ingin Anda tampilkan
+                              itemCount: shotDistance,
                               itemBuilder: (context, index) {
-                                // Bungkus Container dengan Center untuk menempatkan item di tengah-tengah layar
                                 return Center(
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 20),
-                                    height: 150,
-                                    width: 100,
-                                    child: Stack(
-                                      children: [
-                                        Transform.translate(
-                                          offset: const Offset(5, -20),
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            height: 20,
-                                            width: 60,
-                                            child: Text("0 - 30",
-                                                style: FontStyleConstant
-                                                    .bowlbyOneSCDescription),
-                                          ),
-                                        ),
-                                        Transform.translate(
-                                          offset: const Offset(70, 8),
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            height: 20,
-                                            width: 40,
-                                            child: Text("100",
-                                                style: FontStyleConstant
-                                                    .bowlbyOneSCDescription),
-                                          ),
-                                        ),
-                                        Transform.translate(
-                                          offset: const Offset(70, 65),
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            height: 20,
-                                            width: 40,
-                                            child: Text("100",
-                                                style: FontStyleConstant
-                                                    .bowlbyOneSCDescription),
-                                          ),
-                                        ),
-                                        Transform.translate(
-                                          offset: const Offset(70, 125),
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            height: 20,
-                                            width: 40,
-                                            child: Text("100",
-                                                style: FontStyleConstant
-                                                    .bowlbyOneSCDescription),
-                                          ),
-                                        ),
-                                        Transform.translate(
-                                          offset: Offset(-20, 0),
-                                          child: Container(
-                                            height: 150,
-                                            width: 100,
-                                            child: Image.asset(
-                                              "assets/images/body.png",
-                                              fit: BoxFit.cover,
+                                  child: Transform.translate(
+                                    offset: displayShotStats(),
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 20),
+                                      height: 150,
+                                      width: 100,
+                                      child: Stack(
+                                        children: [
+                                          Transform.translate(
+                                            offset: const Offset(5, -20),
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              height: 20,
+                                              width: 60,
+                                              child: Text(
+                                                  "${detailWeapon.weaponsDetail["weaponStats"]["damageRanges"][index]["rangeStartMeters"]} - ${detailWeapon.weaponsDetail["weaponStats"]["damageRanges"][index]["rangeEndMeters"]}",
+                                                  style: FontStyleConstant
+                                                      .bowlbyOneSCDescription),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Transform.translate(
+                                            offset: const Offset(70, 8),
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              height: 20,
+                                              width: 40,
+                                              child: Text(
+                                                  "${detailWeapon.weaponsDetail["weaponStats"]["damageRanges"][index]["headDamage"]}",
+                                                  style: FontStyleConstant
+                                                      .bowlbyOneSCDescription),
+                                            ),
+                                          ),
+                                          Transform.translate(
+                                            offset: const Offset(70, 65),
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              height: 20,
+                                              width: 40,
+                                              child: Text(
+                                                  "${detailWeapon.weaponsDetail["weaponStats"]["damageRanges"][index]["bodyDamage"]}",
+                                                  style: FontStyleConstant
+                                                      .bowlbyOneSCDescription),
+                                            ),
+                                          ),
+                                          Transform.translate(
+                                            offset: const Offset(70, 125),
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              height: 20,
+                                              width: 40,
+                                              child: Text(
+                                                  "${detailWeapon.weaponsDetail["weaponStats"]["damageRanges"][index]["legDamage"]}",
+                                                  style: FontStyleConstant
+                                                      .bowlbyOneSCDescription),
+                                            ),
+                                          ),
+                                          Transform.translate(
+                                            offset: Offset(-20, 0),
+                                            child: Container(
+                                              height: 150,
+                                              width: 100,
+                                              child: Image.asset(
+                                                "assets/images/body.png",
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );
@@ -337,15 +362,20 @@ class DetailweaponsPage extends StatelessWidget {
                             style: FontStyleConstant.bowlbyOneSCDescription
                                 .copyWith(color: ColorConstant.red),
                           ),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           Container(
                               height: 100,
                               width: double.infinity,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: 10,
+                                itemCount:
+                                    detailWeapon.weaponsDetail["skins"].length,
                                 itemBuilder: (context, index) =>
                                     GestureDetector(
                                   onTap: () {
+                                    detailWeapon.getDetailWeaponSkin(index);
                                     Navigator.pushNamed(
                                         context, '/weapons_skin_details');
                                   },
@@ -359,8 +389,8 @@ class DetailweaponsPage extends StatelessWidget {
                                       border: Border.all(
                                           color: ColorConstant.white, width: 1),
                                     ),
-                                    child: Image.asset(
-                                      'assets/images/vandal.png',
+                                    child: Image.network(
+                                      "${detailWeapon.weaponsDetail["skins"][index]["chromas"][0]["fullRender"]}",
                                       fit: BoxFit.contain,
                                     ),
                                   ),

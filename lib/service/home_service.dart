@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomeProvider with ChangeNotifier {
+class HomeService with ChangeNotifier {
   final List<String> _nameList = [
     "Agents",
     "Weapons",
@@ -10,7 +10,7 @@ class HomeProvider with ChangeNotifier {
     "Gun\nBuddies"
   ];
 
-  HomeProvider() {
+  HomeService() {
     _filteredList = _nameList;
   }
 

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 
-import 'package:valorant_documentation/provider/home_provider.dart';
+import 'package:valorant_documentation/service/home_service.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>(context);
+    final homeProvider = Provider.of<HomeService>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

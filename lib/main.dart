@@ -14,8 +14,9 @@ import 'package:valorant_documentation/pages/maps_page.dart';
 import 'package:valorant_documentation/pages/player_cards_page.dart';
 import 'package:valorant_documentation/pages/ranks_page.dart';
 import 'package:valorant_documentation/pages/weapons_page.dart';
-import 'package:valorant_documentation/provider/home_provider.dart';
+import 'package:valorant_documentation/service/home_service.dart';
 import 'package:valorant_documentation/service/agent_service.dart';
+import 'package:valorant_documentation/service/weapons_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,11 +30,14 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => HomeProvider(),
+          create: (context) => HomeService(),
         ),
         ChangeNotifierProvider(
           create: (context) => AgentsService(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) => WeaponsService(),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(

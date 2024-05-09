@@ -36,7 +36,7 @@ class _AgentsPageState extends State<AgentsPage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
               child: TextFormField(
                 onChanged: (value) => agentsService.searchAgents(value),
                 style: FontStyleConstant.bowlbyOneSCDescription
@@ -65,7 +65,7 @@ class _AgentsPageState extends State<AgentsPage> {
             ),
             agentsService.isLoadingAgents
                 ? const Padding(
-                    padding: EdgeInsets.only(top: 230),
+                    padding: EdgeInsets.only(top: 210),
                     child: Center(
                       child: CircularProgressIndicator(
                         color: Colors.red,
@@ -161,7 +161,7 @@ class _AgentsPageState extends State<AgentsPage> {
                                   );
                                 },
                                 options: CarouselOptions(
-                                  height: 550,
+                                  height: 580,
                                   aspectRatio: 16 / 9,
                                   viewportFraction: 0.8,
                                   initialPage: 0,
