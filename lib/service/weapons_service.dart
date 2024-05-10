@@ -34,7 +34,7 @@ class WeaponsService extends ChangeNotifier {
         throw response.statusCode.toString();
       }
     } on DioException catch (e) {
-      _errorMessage = "Kesalahan : 404";
+      _errorMessage = e.response?.statusCode.toString();
       notifyListeners();
     } finally {
       _isLoading = false;

@@ -71,7 +71,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
                 : weaponsService.errorMessage != null
                     ? Center(
                         child: Text(
-                          "${weaponsService.errorMessage}",
+                          "kesalahan : ${weaponsService.errorMessage}",
                           style: FontStyleConstant.bowlbyOneSCTitlePage,
                         ),
                       )
