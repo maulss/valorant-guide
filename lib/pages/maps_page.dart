@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
+import 'package:valorant_documentation/service/map_service.dart';
 import 'package:valorant_documentation/widgets/list_container_widget.dart';
 
-class MapsPage extends StatelessWidget {
+class MapsPage extends StatefulWidget {
   const MapsPage({super.key});
 
   @override
+  State<MapsPage> createState() => _MapsPageState();
+}
+
+class _MapsPageState extends State<MapsPage> {
+  TextEditingController serachController = TextEditingController();
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<MapService>(context, listen: false).getMaps();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final mapsService = Provider.of<MapService>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Maps"),
@@ -17,11 +34,11 @@ class MapsPage extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
-              // onChanged: (value) => homeProvider.runFilter(value),
+              onChanged: (value) => mapsService.searchMaps(value),
               style: FontStyleConstant.bowlbyOneSCDescription
                   .copyWith(fontSize: 12, color: ColorConstant.red),
               cursorColor: ColorConstant.red,
-              // controller: serachController,
+              controller: serachController,
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: ColorConstant.red),
@@ -41,59 +58,123 @@ class MapsPage extends StatelessWidget {
             const SizedBox(
               height: 29.5,
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, '/maps_detail'),
-                  child: ListContainer(
-                    border: Border.all(color: ColorConstant.white, width: 2),
-                    child: Stack(
-                      children: [
-                        Positioned.fill(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                  image: AssetImage(
-                                    "assets/images/ascent.png",
-                                  ),
-                                  fit: BoxFit.cover),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                        ),
-                        Transform.translate(
-                          offset: const Offset(30, 30),
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            height: 40,
-                            width: 200,
-                            // color: Colors.amber,
-                            child: Text(
-                              "ascent",
-                              style: FontStyleConstant.bowlbyOneSCTitlePage
-                                  .copyWith(fontSize: 30),
-                            ),
-                          ),
-                        ),
-                        Transform.translate(
-                          offset: const Offset(30, 60),
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            height: 30,
-                            width: 300,
-                            // color: Colors.amber,
-                            child: Text("45°26'BF'N,12°20'Q'E",
-                                style: FontStyleConstant.bowlbyOneSCDescription
-                                    .copyWith(color: ColorConstant.darkRed)),
-                          ),
-                        )
-                      ],
+            mapsService.isLoading
+                ? const Padding(
+                    padding: EdgeInsets.only(top: 230),
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.red,
+                      ),
                     ),
-                  ),
-                ),
-              ),
-            )
+                  )
+                : mapsService.error != null
+                    ? Center(
+                        child: Text(
+                          "${mapsService.error}",
+                          style: FontStyleConstant.bowlbyOneSCTitlePage,
+                        ),
+                      )
+                    : mapsService.maps.isEmpty
+                        ? Center(
+                            child: Text(
+                              "Agents Kosong",
+                              style: FontStyleConstant.bowlbyOneSCTitlePage,
+                            ),
+                          )
+                        : mapsService.filteredMaps.isNotEmpty
+                            ? Expanded(
+                                child: ListView.builder(
+                                  itemCount: mapsService.filteredMaps.length,
+                                  itemBuilder: (context, index) {
+                                    final dataMaps =
+                                        mapsService.filteredMaps[index];
+                                    if (dataMaps["displayName"] !=
+                                        "The Range") {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          mapsService.getDetailMaps(index);
+                                          Navigator.pushNamed(
+                                              context, '/maps_detail');
+                                        },
+                                        child: ListContainer(
+                                          border: Border.all(
+                                              color: ColorConstant.white,
+                                              width: 2),
+                                          child: Stack(
+                                            children: [
+                                              Positioned.fill(
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                        image: NetworkImage(
+                                                            "${dataMaps["splash"]}"),
+                                                        fit: BoxFit.cover),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                  ),
+                                                ),
+                                              ),
+                                              Transform.translate(
+                                                offset: const Offset(30, 30),
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  height: 40,
+                                                  width: 200,
+                                                  child: Text(
+                                                    "${dataMaps["displayName"]}",
+                                                    style: FontStyleConstant
+                                                        .bowlbyOneSCTitlePage
+                                                        .copyWith(fontSize: 30),
+                                                  ),
+                                                ),
+                                              ),
+                                              Transform.translate(
+                                                offset: const Offset(30, 60),
+                                                child: Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  height: 30,
+                                                  width: 300,
+                                                  child:
+                                                      dataMaps["coordinates"] !=
+                                                              null
+                                                          ? Text(
+                                                              "${dataMaps["coordinates"]}",
+                                                              style: FontStyleConstant
+                                                                  .bowlbyOneSCDescription
+                                                                  .copyWith(
+                                                                      color: ColorConstant
+                                                                          .white),
+                                                            )
+                                                          : Text(
+                                                              "---",
+                                                              style: FontStyleConstant
+                                                                  .bowlbyOneSCDescription
+                                                                  .copyWith(
+                                                                      color: ColorConstant
+                                                                          .white),
+                                                            ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    } else {
+                                      return const SizedBox.shrink();
+                                    }
+                                  },
+                                ),
+                              )
+                            : Center(
+                                child: Text(
+                                  "Data Not Found",
+                                  style: FontStyleConstant.bowlbyOneSCTitlePage
+                                      .copyWith(fontSize: 30),
+                                ),
+                              ),
           ],
         ),
       ),

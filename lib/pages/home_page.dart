@@ -9,7 +9,6 @@ import 'package:valorant_documentation/service/home_service.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  // Tambahkan gambar terkait item ke dalam peta (map).
   Map<String, Map<String, String>> pageMap = {
     "Agents": {'route': '/agents', 'image': 'assets/images/agents.png'},
     "Weapons": {'route': '/weapons', 'image': 'assets/images/weapons.png'},
@@ -76,7 +75,6 @@ class HomePage extends StatelessWidget {
                             if (routeName != null) {
                               Navigator.pushNamed(context, routeName);
                             } else {
-                              // Tambahkan tindakan jika tidak ada routeName yang sesuai
                               print('Route not found for: $currentItem');
                             }
                           },

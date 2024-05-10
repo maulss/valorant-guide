@@ -16,6 +16,7 @@ import 'package:valorant_documentation/pages/ranks_page.dart';
 import 'package:valorant_documentation/pages/weapons_page.dart';
 import 'package:valorant_documentation/service/home_service.dart';
 import 'package:valorant_documentation/service/agent_service.dart';
+import 'package:valorant_documentation/service/map_service.dart';
 import 'package:valorant_documentation/service/weapons_service.dart';
 
 void main() {
@@ -37,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => WeaponsService(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => MapService(),
         ),
       ],
       child: MaterialApp(
@@ -62,7 +66,7 @@ class MyApp extends StatelessWidget {
           '/weapons_details': (context) => const DetailweaponsPage(),
           '/weapons_skin_details': (context) => const DetailweaponsSkinPage(),
           '/maps': (context) => const MapsPage(),
-          '/maps_detail': (context) => const DetailMapsPage(),
+          '/maps_detail': (context) => DetailMapsPage(),
           '/ranks': (context) => const RanksPage(),
           '/ranks_detail': (context) => const DetailRanksPage(),
           '/player_cards': (context) => const PlayerCardsPage(),
