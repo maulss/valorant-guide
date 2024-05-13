@@ -28,9 +28,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  banner_carousel: ^1.2.1
+  flutter_gemini: ^2.0.3
   google_fonts: 6.0.0
   video_player: ^2.8.2
   carousel_slider: ^4.2.1
+  connectivity_plus: ^5.0.2
+  floating_bottom_navigation_bar: ^1.5.2
   provider: ^6.1.2
   dio: ^5.4.1
   flutter:

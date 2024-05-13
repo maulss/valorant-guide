@@ -1,20 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class AgentsService extends ChangeNotifier {
   final Dio _dio = Dio();
   List<dynamic> _agents = [];
   bool _isLoadingAgents = false;
   String? _errorAgents;
-
   List<dynamic> get agents => _agents;
   bool get isLoadingAgents => _isLoadingAgents;
   String? get errorAgents => _errorAgents;
-
   Map<String, dynamic> _agentsDetail = {};
-
   Map<String, dynamic> get agentsDetail => _agentsDetail;
-
   List<dynamic> _filteredAgents = [];
   List<dynamic> get filteredAgents => _filteredAgents;
 
@@ -22,18 +19,30 @@ class AgentsService extends ChangeNotifier {
   void getAgents() async {
     _isLoadingAgents = true;
     notifyListeners();
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      _errorAgents = "Tidak ada koneksi internet.";
+      _isLoadingAgents = false;
+      notifyListeners();
+      return;
+    }
     try {
       final response = await _dio.get('https://valorant-api.com/v1/agents',
           queryParameters: getParams);
       if (response.statusCode == 200) {
         _agents = response.data['data'];
+
         _filteredAgents = List.from(_agents);
         notifyListeners();
       } else {
         throw response.statusCode.toString();
       }
     } on DioException catch (e) {
-      _errorAgents = "Kesalahan: ${e.response?.statusCode}";
+      if (e.response?.statusCode == 404) {
+        _errorAgents = "Resource not found, try again later.";
+      } else {
+        _errorAgents = "An error occurred. Please try again later";
+      }
       notifyListeners();
     } finally {
       _isLoadingAgents = false;

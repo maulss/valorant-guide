@@ -73,10 +73,16 @@ class _AgentsPageState extends State<AgentsPage> {
                     ),
                   )
                 : agentsService.errorAgents != null
-                    ? Center(
-                        child: Text(
-                          "${agentsService.errorAgents}",
-                          style: FontStyleConstant.bowlbyOneSCTitlePage,
+                    ? Container(
+                        padding: const EdgeInsets.all(20),
+                        alignment: Alignment.center,
+                        width: double.infinity,
+                        height: 500,
+                        child: Center(
+                          child: Text(
+                            "${agentsService.errorAgents}",
+                            style: FontStyleConstant.bowlbyOneSCTitlePage,
+                          ),
                         ),
                       )
                     : agentsService.agents.isEmpty
