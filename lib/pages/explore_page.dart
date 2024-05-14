@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 
-import 'package:valorant_documentation/service/home_service.dart';
+import 'package:valorant_documentation/service/explore_service.dart';
 
 // ignore: must_be_immutable
 class ExplorePage extends StatelessWidget {
@@ -28,7 +28,7 @@ class ExplorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeService>(context);
+    final exploreService = Provider.of<ExploreService>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -39,7 +39,7 @@ class ExplorePage extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
-                onChanged: (value) => homeProvider.runFilter(value),
+                onChanged: (value) => exploreService.runFilter(value),
                 style: FontStyleConstant.bowlbyOneSCDescription
                     .copyWith(fontSize: 12, color: ColorConstant.red),
                 cursorColor: ColorConstant.red,
@@ -64,13 +64,13 @@ class ExplorePage extends StatelessWidget {
                 height: 29.5,
               ),
               Expanded(
-                child: homeProvider.filteredList.isNotEmpty
+                child: exploreService.filteredList.isNotEmpty
                     ? ListView.builder(
-                        itemCount: homeProvider.filteredList.length,
+                        itemCount: exploreService.filteredList.length,
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
                             String currentItem =
-                                homeProvider.filteredList[index];
+                                exploreService.filteredList[index];
                             String? routeName = pageMap[currentItem]?['route'];
                             if (routeName != null) {
                               Navigator.pushNamed(context, routeName);
@@ -92,8 +92,8 @@ class ExplorePage extends StatelessWidget {
                                     width: 180,
                                     height: 138,
                                     child: Image.asset(
-                                      pageMap[homeProvider.filteredList[index]]
-                                              ?['image'] ??
+                                      pageMap[exploreService
+                                              .filteredList[index]]?['image'] ??
                                           '',
                                       fit: BoxFit.contain,
                                     ),
@@ -106,7 +106,7 @@ class ExplorePage extends StatelessWidget {
                                     width: 180,
                                     height: 138,
                                     child: Text(
-                                      homeProvider.filteredList[index],
+                                      exploreService.filteredList[index],
                                       style: FontStyleConstant
                                           .bowlbyOneSCTitlePage
                                           .copyWith(fontSize: 29),

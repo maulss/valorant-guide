@@ -4,27 +4,28 @@ import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/apikey_constant.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
-import 'package:valorant_documentation/pages/agents_page.dart';
-import 'package:valorant_documentation/pages/detail_agents_page.dart';
-import 'package:valorant_documentation/pages/detail_maps_page.dart';
-import 'package:valorant_documentation/pages/detail_ranks_page.dart';
-import 'package:valorant_documentation/pages/detail_weapons_page.dart';
-import 'package:valorant_documentation/pages/detail_weapons_skin_page.dart';
+import 'package:valorant_documentation/pages/agents_page/agents_page.dart';
+import 'package:valorant_documentation/pages/agents_page/detail_agents_page.dart';
+import 'package:valorant_documentation/pages/auth_page/login_page.dart';
+import 'package:valorant_documentation/pages/auth_page/signup_page.dart';
+import 'package:valorant_documentation/pages/maps_page/detail_maps_page.dart';
+import 'package:valorant_documentation/pages/splash_page.dart';
+import 'package:valorant_documentation/pages/weapons_page/detail_weapons_page.dart';
+import 'package:valorant_documentation/pages/weapons_page/detail_weapons_skin_page.dart';
 import 'package:valorant_documentation/pages/gemini_ai_page.dart';
 import 'package:valorant_documentation/pages/gunbuudies_page.dart';
 import 'package:valorant_documentation/pages/explore_page.dart';
 import 'package:valorant_documentation/pages/home_page.dart';
-import 'package:valorant_documentation/pages/maps_page.dart';
+import 'package:valorant_documentation/pages/maps_page/maps_page.dart';
 import 'package:valorant_documentation/pages/player_cards_page.dart';
 import 'package:valorant_documentation/pages/ranks_page.dart';
-import 'package:valorant_documentation/pages/weapons_page.dart';
+import 'package:valorant_documentation/pages/weapons_page/weapons_page.dart';
 import 'package:valorant_documentation/pages/welcome_page.dart';
 import 'package:valorant_documentation/provider/bottom_navigator_provider.dart';
 import 'package:valorant_documentation/service/player_card_service.dart';
 import 'package:valorant_documentation/service/gemini_service.dart';
 import 'package:valorant_documentation/service/gun_buddies_service.dart';
-
-import 'package:valorant_documentation/service/home_service.dart';
+import 'package:valorant_documentation/service/explore_service.dart';
 import 'package:valorant_documentation/service/agent_service.dart';
 import 'package:valorant_documentation/service/map_service.dart';
 import 'package:valorant_documentation/service/rank_service.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => HomeService(),
+          create: (context) => ExploreService(),
         ),
         ChangeNotifierProvider(
           create: (context) => AgentsService(),
@@ -84,7 +85,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/home',
+        initialRoute: '/splash',
         routes: {
           '/explore': (context) => ExplorePage(),
           '/agents': (context) => const AgentsPage(),
@@ -95,12 +96,14 @@ class MyApp extends StatelessWidget {
           '/maps': (context) => const MapsPage(),
           '/maps_detail': (context) => const DetailMapsPage(),
           '/ranks': (context) => const RanksPage(),
-          '/ranks_detail': (context) => const DetailRanksPage(),
           '/player_cards': (context) => const PlayerCardsPage(),
           '/gunbuddies': (context) => const GunBuddiesPage(),
           '/gemini_ai': (context) => GeminiAiPage(),
           '/welcome': (context) => WelcomePage(),
           '/home': (context) => const HomePage(),
+          '/splash': (context) => const SplashPage(),
+          '/login': (context) => LoginPage(),
+          '/sign_up': (context) => SignUpPage(),
         },
       ),
     );

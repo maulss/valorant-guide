@@ -18,7 +18,7 @@ class BottomNavigations extends StatelessWidget {
         FloatingNavbarItem(icon: Icons.home, title: 'Home'),
         FloatingNavbarItem(icon: Icons.explore, title: 'Explore'),
         FloatingNavbarItem(icon: Icons.analytics, title: 'Analysis'),
-        FloatingNavbarItem(icon: Icons.logout, title: 'Logout'),
+        FloatingNavbarItem(icon: Icons.person, title: 'Profile'),
       ],
       currentIndex: bottomNavigationProvider.currentIndex,
       onTap: (val) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
-import 'package:valorant_documentation/pages/meele_page.dart';
+import 'package:valorant_documentation/pages/weapons_page/meele_page.dart';
 import 'package:valorant_documentation/service/weapons_service.dart';
 import 'package:valorant_documentation/widgets/list_container_widget.dart';
 
