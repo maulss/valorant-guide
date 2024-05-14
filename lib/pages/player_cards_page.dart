@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 
-import 'package:valorant_documentation/service/card_player_service.dart';
+import 'package:valorant_documentation/service/player_card_service.dart';
 
 class PlayerCardsPage extends StatefulWidget {
-  PlayerCardsPage({super.key});
+  const PlayerCardsPage({super.key});
 
   @override
   State<PlayerCardsPage> createState() => _PlayerCardsPageState();
@@ -18,14 +18,14 @@ class _PlayerCardsPageState extends State<PlayerCardsPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<CardPlayerService>(context, listen: false).getCardPlayer();
+      Provider.of<PLayerCardService>(context, listen: false).getCardPlayer();
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final cardService = Provider.of<CardPlayerService>(context);
+    final cardService = Provider.of<PLayerCardService>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -42,7 +42,7 @@ class _PlayerCardsPageState extends State<PlayerCardsPage> {
               ? Center(
                   child: Text("${cardService.error}"),
                 )
-              : cardService.cardPlayer.isEmpty
+              : cardService.playerCard == null
                   ? Center(
                       child: Text(
                         "Data Is Empty",
@@ -53,11 +53,11 @@ class _PlayerCardsPageState extends State<PlayerCardsPage> {
                       children: [
                         Column(
                           children: [
-                            Container(
+                            SizedBox(
                               height: 270,
                               width: double.infinity,
                               child: Image.network(
-                                "${cardService.cardPlayer[cardService.currentIndex]["largeArt"]}",
+                                "${cardService.playerCard!.data![cardService.currentIndex].largeArt}",
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -66,44 +66,47 @@ class _PlayerCardsPageState extends State<PlayerCardsPage> {
                               height: 50,
                               width: double.infinity,
                               child: Text(
-                                "${cardService.cardPlayer[cardService.currentIndex]["displayName"]}",
+                                "${cardService.playerCard!.data![cardService.currentIndex].displayName}",
                                 style: FontStyleConstant.bowlbyOneSCTitlePage,
                               ),
                             )
                           ],
                         ),
-                        Container(
+                        SizedBox(
                           height: 440,
                           width: double.infinity,
                           child: GridView.builder(
-                            itemCount: cardService.cardPlayer.length,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3),
-                            itemBuilder: (context, index) => GestureDetector(
-                              onTap: () {
-                                cardService.getIndex(index);
-                              },
-                              child: Container(
-                                margin: const EdgeInsets.all(5),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: cardService.currentIndex == index
-                                        ? ColorConstant.red
-                                        : ColorConstant.white,
-                                    width: cardService.currentIndex == index
-                                        ? 3
-                                        : 2,
+                              itemCount: cardService.playerCard!.data!.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3),
+                              itemBuilder: (context, index) {
+                                final cardData =
+                                    cardService.playerCard!.data![index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    cardService.getIndex(index);
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: cardService.currentIndex == index
+                                            ? ColorConstant.red
+                                            : ColorConstant.white,
+                                        width: cardService.currentIndex == index
+                                            ? 3
+                                            : 2,
+                                      ),
+                                    ),
+                                    child: Image.network(
+                                      "${cardData.smallArt}",
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
-                                child: Image.network(
-                                  "${cardService.cardPlayer[index]["largeArt"]}",
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
+                                );
+                              }),
+                        ),
                       ],
                     ),
     );

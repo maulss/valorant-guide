@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:valorant_documentation/model/player_card.dart';
 
-class CardPlayerService extends ChangeNotifier {
+class PLayerCardService extends ChangeNotifier {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
-  List<dynamic> _cardPlayer = [];
-  List<dynamic> get cardPlayer => _cardPlayer;
+  PlayerCardModel? _playerCard;
+  PlayerCardModel? get playerCard => _playerCard;
   String? _error;
   String? get error => _error;
   int _currentIndex = 0;
@@ -18,7 +19,7 @@ class CardPlayerService extends ChangeNotifier {
       final response =
           await Dio().get("https://valorant-api.com/v1/playercards");
       if (response.statusCode == 200) {
-        _cardPlayer = response.data["data"];
+        _playerCard = PlayerCardModel.fromJson(response.data);
 
         notifyListeners();
       }

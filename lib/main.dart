@@ -20,8 +20,9 @@ import 'package:valorant_documentation/pages/ranks_page.dart';
 import 'package:valorant_documentation/pages/weapons_page.dart';
 import 'package:valorant_documentation/pages/welcome_page.dart';
 import 'package:valorant_documentation/provider/bottom_navigator_provider.dart';
-import 'package:valorant_documentation/service/card_player_service.dart';
+import 'package:valorant_documentation/service/player_card_service.dart';
 import 'package:valorant_documentation/service/gemini_service.dart';
+import 'package:valorant_documentation/service/gun_buddies_service.dart';
 
 import 'package:valorant_documentation/service/home_service.dart';
 import 'package:valorant_documentation/service/agent_service.dart';
@@ -60,10 +61,13 @@ class MyApp extends StatelessWidget {
           create: (context) => BottomNavigatorProvider(),
         ),
         ChangeNotifierProvider(
-          create: (context) => CardPlayerService(),
+          create: (context) => PLayerCardService(),
         ),
         ChangeNotifierProvider(
           create: (context) => GeminiService(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => GunBuddiesService(),
         ),
       ],
       child: MaterialApp(
@@ -92,7 +96,7 @@ class MyApp extends StatelessWidget {
           '/maps_detail': (context) => const DetailMapsPage(),
           '/ranks': (context) => const RanksPage(),
           '/ranks_detail': (context) => const DetailRanksPage(),
-          '/player_cards': (context) => PlayerCardsPage(),
+          '/player_cards': (context) => const PlayerCardsPage(),
           '/gunbuddies': (context) => const GunBuddiesPage(),
           '/gemini_ai': (context) => GeminiAiPage(),
           '/welcome': (context) => WelcomePage(),

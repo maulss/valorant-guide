@@ -6,7 +6,7 @@ class GeminiService extends ChangeNotifier {
   String? _generatedGemini;
   String? get generatedGemini => _generatedGemini;
 
-  List<String> _responseParts = [];
+  final List<String> _responseParts = [];
   List<String> get responseParts => _responseParts;
 
   void sendMessage(String text) async {

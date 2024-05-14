@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';

@@ -6,8 +6,8 @@ import 'package:valorant_documentation/constant/font_style_constant.dart';
 import 'package:valorant_documentation/service/agent_service.dart';
 import 'package:valorant_documentation/service/map_service.dart';
 import 'package:valorant_documentation/service/weapons_service.dart';
-import 'package:valorant_documentation/widgets/banner_container.dart';
-import 'package:valorant_documentation/widgets/icon_banner.dart';
+import 'package:valorant_documentation/widgets/banner_container_widget.dart';
+import 'package:valorant_documentation/widgets/icon_banner_widget.dart';
 
 class WelcomePage extends StatefulWidget {
   WelcomePage({super.key});
@@ -210,7 +210,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                     height: 370,
                                     width: double.infinity,
                                     child: GridView.builder(
-                                        itemCount: 8,
+                                        itemCount: 10,
                                         gridDelegate:
                                             const SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 2),
@@ -366,7 +366,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                     height: 150,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
-                                      itemCount: 4,
+                                      itemCount: 6,
                                       itemBuilder: (context, index) {
                                         final dataWeapons =
                                             weaponService.weapons[index];
@@ -525,7 +525,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                     height: 150,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
-                                      itemCount: 4,
+                                      itemCount: 6,
                                       itemBuilder: (context, index) {
                                         final dataMaps =
                                             mapsService.maps[index];
