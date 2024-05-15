@@ -176,7 +176,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       height: 20,
                     ),
                     agentsService.isLoadingAgents
-                        ? Container(
+                        ? SizedBox(
                             height: 370,
                             child: Center(
                               child: CircularProgressIndicator(
@@ -185,7 +185,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             ),
                           )
                         : agentsService.errorAgents != null
-                            ? Container(
+                            ? SizedBox(
                                 height: 150,
                                 child: Center(
                                   child: Text(
@@ -196,7 +196,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 ),
                               )
                             : agentsService.agents.isEmpty
-                                ? Container(
+                                ? SizedBox(
                                     height: 150,
                                     child: Center(
                                       child: Text(
@@ -206,7 +206,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                       ),
                                     ),
                                   )
-                                : Container(
+                                : SizedBox(
                                     height: 370,
                                     width: double.infinity,
                                     child: GridView.builder(
@@ -238,7 +238,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                                 alignment:
                                                     Alignment.bottomCenter,
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                     height: 600,
                                                     child: Image.network(
                                                       "${dataAgents["bustPortrait"]}",
@@ -331,7 +331,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       height: 20,
                     ),
                     weaponService.isLoading
-                        ? Container(
+                        ? SizedBox(
                             height: 150,
                             child: Center(
                               child: CircularProgressIndicator(
@@ -340,7 +340,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             ),
                           )
                         : weaponService.errorMessage != null
-                            ? Container(
+                            ? SizedBox(
                                 height: 150,
                                 child: Center(
                                   child: Text(
@@ -351,7 +351,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 ),
                               )
                             : weaponService.weapons.isEmpty
-                                ? Container(
+                                ? SizedBox(
                                     height: 150,
                                     child: Center(
                                       child: Text(
@@ -361,7 +361,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                       ),
                                     ),
                                   )
-                                : Container(
+                                : SizedBox(
                                     width: double.infinity,
                                     height: 150,
                                     child: ListView.builder(
@@ -493,7 +493,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       height: 20,
                     ),
                     mapsService.isLoading
-                        ? Container(
+                        ? SizedBox(
                             height: 150,
                             child: Center(
                               child: CircularProgressIndicator(
@@ -502,7 +502,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             ),
                           )
                         : mapsService.error != null
-                            ? Container(
+                            ? SizedBox(
                                 height: 150,
                                 child: Center(
                                     child: Text(
@@ -511,7 +511,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 )),
                               )
                             : mapsService.maps.isEmpty
-                                ? Container(
+                                ? SizedBox(
                                     height: 150,
                                     child: Center(
                                         child: Text(
@@ -520,7 +520,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                           .bowlbyOneSCTitlePage,
                                     )),
                                   )
-                                : Container(
+                                : SizedBox(
                                     width: double.infinity,
                                     height: 150,
                                     child: ListView.builder(

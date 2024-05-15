@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
+import 'package:valorant_documentation/provider/form_provider.dart';
 import 'package:valorant_documentation/utils/shared_pref.dart';
 import 'package:valorant_documentation/widgets/button_custom_widget.dart';
 import 'package:valorant_documentation/widgets/form_widget.dart';
@@ -26,8 +28,50 @@ class _SignUpPageState extends State<SignUpPage> {
     super.dispose();
   }
 
+  bool obsesure = true;
+  // String? _nameError;
+  // String? _emailError;
+  // String? _passwordError;
+
+  // void _validateName(String value) {
+  //   setState(() {
+  //     if (value.isEmpty) {
+  //       _nameError = 'Name cannot be empty';
+  //     } else if (value.length < 3) {
+  //       _nameError = 'Name must be at least 3 characters';
+  //     } else {
+  //       _nameError = null;
+  //     }
+  //   });
+  // }
+
+  // void _validateEmail(String value) {
+  //   setState(() {
+  //     if (value.isEmpty) {
+  //       _emailError = 'Email cannot be empty';
+  //     } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+  //       _emailError = 'Enter a valid email';
+  //     } else {
+  //       _emailError = null;
+  //     }
+  //   });
+  // }
+
+  // void _validatePassword(String value) {
+  //   setState(() {
+  //     if (value.isEmpty) {
+  //       _passwordError = 'Password cannot be empty';
+  //     } else if (value.length < 3) {
+  //       _passwordError = 'Password must be at least 3 characters';
+  //     } else {
+  //       _passwordError = null;
+  //     }
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
+    final formProvider = Provider.of<FormProvider>(context);
     return Scaffold(
       body: Center(
         child: Padding(
@@ -52,22 +96,45 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 40,
                 ),
                 FormWidget(
+                  onChanged: (value) {
+                    formProvider.validateName(value);
+                  },
                   controller: nameController,
                   labelText: "name",
+                  errorText: formProvider.nameError,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 FormWidget(
+                  onChanged: (value) {
+                    formProvider.validateEmail(value);
+                  },
                   labelText: "Email",
                   controller: emailController,
+                  errorText: formProvider.emailError,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 FormWidget(
+                  onChanged: (value) {
+                    formProvider.validatePassword(value);
+                  },
+                  errorText: formProvider.passwordError,
                   labelText: "password",
                   controller: passController,
+                  obscureText: obsesure,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        obsesure = !obsesure;
+                        print(obsesure);
+                      });
+                    },
+                    icon: Icon(
+                        obsesure ? Icons.visibility : Icons.visibility_off),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -75,12 +142,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 ButtomCustomWidget(
                   text: "Signup",
                   onTap: () {
-                    if (nameController.text.isEmpty ||
-                        emailController.text.isEmpty ||
-                        passController.text.isEmpty) {
+                    if (formProvider.nameError != null ||
+                        formProvider.emailError != null ||
+                        formProvider.passwordError != null) {
                       const snackBar = SnackBar(
                         content: Text(
-                          'Form cannot empty',
+                          'Fix the Form',
                         ),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);

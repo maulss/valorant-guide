@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
+import 'package:valorant_documentation/provider/form_provider.dart';
 import 'package:valorant_documentation/utils/shared_pref.dart';
 import 'package:valorant_documentation/widgets/button_custom_widget.dart';
 import 'package:valorant_documentation/widgets/form_widget.dart';
@@ -26,8 +28,11 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
+  bool obsesure = true;
+
   @override
   Widget build(BuildContext context) {
+    final formProvider = Provider.of<FormProvider>(context);
     return Scaffold(
       body: Center(
         child: Padding(
@@ -52,6 +57,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 40,
                 ),
                 FormWidget(
+                  onChanged: (value) {
+                    formProvider.validateEmail(value);
+                  },
+                  errorText: formProvider.emailError,
                   labelText: "Email",
                   controller: emailController,
                 ),
@@ -59,8 +68,23 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 FormWidget(
+                  onChanged: (value) {
+                    formProvider.validatePassword(value);
+                  },
+                  errorText: formProvider.passwordError,
+                  obscureText: obsesure,
                   labelText: "password",
                   controller: passController,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        obsesure = !obsesure;
+                        print(obsesure);
+                      });
+                    },
+                    icon: Icon(
+                        obsesure ? Icons.visibility : Icons.visibility_off),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -69,11 +93,11 @@ class _LoginPageState extends State<LoginPage> {
                   text: "Login",
                   onTap: () async {
                     final username = await SharedPref.getUserModel();
-                    if (emailController.text.isEmpty ||
-                        passController.text.isEmpty) {
+                    if (formProvider.emailError != null ||
+                        formProvider.passwordError != null) {
                       const snackBar = SnackBar(
                         content: Text(
-                          'Form cannot empty',
+                          'Fix the form',
                         ),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);

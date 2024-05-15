@@ -12,6 +12,9 @@ class FormWidget extends StatelessWidget {
     this.labelText,
     this.prefixIcon,
     this.prefixIconColor,
+    this.obscureText = false,
+    this.suffixIcon,
+    this.errorText,
   });
 
   final void Function(String)? onChanged;
@@ -20,16 +23,25 @@ class FormWidget extends StatelessWidget {
   final String? labelText;
   final Widget? prefixIcon;
   final Color? prefixIconColor;
+  final bool obscureText;
+  final Widget? suffixIcon;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obscureText,
       onChanged: onChanged,
       style: FontStyleConstant.bowlbyOneSCDescription
           .copyWith(fontSize: 12, color: ColorConstant.red),
       cursorColor: ColorConstant.red,
       controller: controller,
       decoration: InputDecoration(
+        errorStyle: FontStyleConstant.bowlbyOneSCDescription.copyWith(
+          color: ColorConstant.white,
+          fontSize: 9,
+        ),
+        errorText: errorText,
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: ColorConstant.red),
         ),
@@ -37,6 +49,8 @@ class FormWidget extends StatelessWidget {
             .copyWith(color: ColorConstant.red, fontSize: 13),
         prefixIcon: prefixIcon,
         prefixIconColor: prefixIconColor,
+        suffixIcon: suffixIcon,
+        suffixIconColor: ColorConstant.red,
         filled: true,
         fillColor: ColorConstant.white,
         labelText: labelText,

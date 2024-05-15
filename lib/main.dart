@@ -9,19 +9,20 @@ import 'package:valorant_documentation/pages/agents_page/detail_agents_page.dart
 import 'package:valorant_documentation/pages/auth_page/login_page.dart';
 import 'package:valorant_documentation/pages/auth_page/signup_page.dart';
 import 'package:valorant_documentation/pages/maps_page/detail_maps_page.dart';
-import 'package:valorant_documentation/pages/splash_page.dart';
+import 'package:valorant_documentation/pages/splash_page/splash_page.dart';
 import 'package:valorant_documentation/pages/weapons_page/detail_weapons_page.dart';
 import 'package:valorant_documentation/pages/weapons_page/detail_weapons_skin_page.dart';
-import 'package:valorant_documentation/pages/gemini_ai_page.dart';
-import 'package:valorant_documentation/pages/gunbuudies_page.dart';
-import 'package:valorant_documentation/pages/explore_page.dart';
-import 'package:valorant_documentation/pages/home_page.dart';
+import 'package:valorant_documentation/pages/gemini_ai_page/gemini_ai_page.dart';
+import 'package:valorant_documentation/pages/gun_buddies_page/gun_buudies_page.dart';
+import 'package:valorant_documentation/pages/exolore_page/explore_page.dart';
+import 'package:valorant_documentation/pages/home_page/home_page.dart';
 import 'package:valorant_documentation/pages/maps_page/maps_page.dart';
-import 'package:valorant_documentation/pages/player_cards_page.dart';
-import 'package:valorant_documentation/pages/ranks_page.dart';
+import 'package:valorant_documentation/pages/player_card_page/player_cards_page.dart';
+import 'package:valorant_documentation/pages/ranks_page/ranks_page.dart';
 import 'package:valorant_documentation/pages/weapons_page/weapons_page.dart';
-import 'package:valorant_documentation/pages/welcome_page.dart';
+import 'package:valorant_documentation/pages/welcome_page/welcome_page.dart';
 import 'package:valorant_documentation/provider/bottom_navigator_provider.dart';
+import 'package:valorant_documentation/provider/form_provider.dart';
 import 'package:valorant_documentation/service/player_card_service.dart';
 import 'package:valorant_documentation/service/gemini_service.dart';
 import 'package:valorant_documentation/service/gun_buddies_service.dart';
@@ -69,6 +70,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => GunBuddiesService(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => FormProvider(),
         ),
       ],
       child: MaterialApp(

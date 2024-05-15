@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 import 'package:valorant_documentation/service/map_service.dart';
+import 'package:valorant_documentation/widgets/form_widget.dart';
 import 'package:valorant_documentation/widgets/list_container_widget.dart';
 
 class MapsPage extends StatefulWidget {
@@ -33,27 +34,12 @@ class _MapsPageState extends State<MapsPage> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            TextFormField(
+            FormWidget(
               onChanged: (value) => mapsService.searchMaps(value),
-              style: FontStyleConstant.bowlbyOneSCDescription
-                  .copyWith(fontSize: 12, color: ColorConstant.red),
-              cursorColor: ColorConstant.red,
+              prefixIcon: const Icon(Icons.search),
+              hintText: "Search",
               controller: serachController,
-              decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: ColorConstant.red),
-                ),
-                hintStyle: FontStyleConstant.bowlbyOneSCDescription
-                    .copyWith(color: ColorConstant.red, fontSize: 13),
-                prefixIcon: const Icon(Icons.search),
-                prefixIconColor: ColorConstant.red,
-                filled: true,
-                fillColor: ColorConstant.white,
-                hintText: "Search",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5),
-                ),
-              ),
+              prefixIconColor: ColorConstant.red,
             ),
             const SizedBox(
               height: 29.5,

@@ -5,6 +5,7 @@ import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 
 import 'package:valorant_documentation/service/agent_service.dart';
+import 'package:valorant_documentation/widgets/form_widget.dart';
 
 class AgentsPage extends StatefulWidget {
   const AgentsPage({super.key});
@@ -37,27 +38,12 @@ class _AgentsPageState extends State<AgentsPage> {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-              child: TextFormField(
+              child: FormWidget(
                 onChanged: (value) => agentsService.searchAgents(value),
-                style: FontStyleConstant.bowlbyOneSCDescription
-                    .copyWith(fontSize: 12, color: ColorConstant.red),
-                cursorColor: ColorConstant.red,
+                prefixIcon: const Icon(Icons.search),
+                hintText: "Search",
                 controller: searchController,
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: ColorConstant.red),
-                  ),
-                  hintStyle: FontStyleConstant.bowlbyOneSCDescription
-                      .copyWith(color: ColorConstant.red, fontSize: 13),
-                  prefixIcon: const Icon(Icons.search),
-                  prefixIconColor: ColorConstant.red,
-                  filled: true,
-                  fillColor: ColorConstant.white,
-                  hintText: "Search",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
+                prefixIconColor: ColorConstant.red,
               ),
             ),
             const SizedBox(

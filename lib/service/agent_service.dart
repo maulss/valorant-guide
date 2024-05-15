@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 
 class AgentsService extends ChangeNotifier {
   final Dio _dio = Dio();
@@ -19,13 +18,7 @@ class AgentsService extends ChangeNotifier {
   void getAgents() async {
     _isLoadingAgents = true;
     notifyListeners();
-    var connectivityResult = await Connectivity().checkConnectivity();
-    if (connectivityResult == ConnectivityResult.none) {
-      _errorAgents = "Tidak ada koneksi internet.";
-      _isLoadingAgents = false;
-      notifyListeners();
-      return;
-    }
+
     try {
       final response = await _dio.get('https://valorant-api.com/v1/agents',
           queryParameters: getParams);
