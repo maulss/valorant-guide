@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
-import 'package:valorant_documentation/service/agent_service.dart';
-import 'package:valorant_documentation/service/map_service.dart';
-import 'package:valorant_documentation/service/weapons_service.dart';
-import 'package:valorant_documentation/widgets/banner_container_widget.dart';
-import 'package:valorant_documentation/widgets/icon_banner_widget.dart';
+import 'package:valorant_documentation/model/service/agent_service.dart';
+import 'package:valorant_documentation/model/service/map_service.dart';
+import 'package:valorant_documentation/model/service/weapons_service.dart';
+import 'package:valorant_documentation/pages/widgets/banner_container_widget.dart';
+import 'package:valorant_documentation/pages/widgets/icon_banner_widget.dart';
 
 class WelcomePage extends StatefulWidget {
   WelcomePage({super.key});

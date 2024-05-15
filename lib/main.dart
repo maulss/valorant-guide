@@ -23,14 +23,14 @@ import 'package:valorant_documentation/pages/weapons_page/weapons_page.dart';
 import 'package:valorant_documentation/pages/welcome_page/welcome_page.dart';
 import 'package:valorant_documentation/provider/bottom_navigator_provider.dart';
 import 'package:valorant_documentation/provider/form_provider.dart';
-import 'package:valorant_documentation/service/player_card_service.dart';
-import 'package:valorant_documentation/service/gemini_service.dart';
-import 'package:valorant_documentation/service/gun_buddies_service.dart';
-import 'package:valorant_documentation/service/explore_service.dart';
-import 'package:valorant_documentation/service/agent_service.dart';
-import 'package:valorant_documentation/service/map_service.dart';
-import 'package:valorant_documentation/service/rank_service.dart';
-import 'package:valorant_documentation/service/weapons_service.dart';
+import 'package:valorant_documentation/model/service/player_card_service.dart';
+import 'package:valorant_documentation/model/service/gemini_service.dart';
+import 'package:valorant_documentation/model/service/gun_buddies_service.dart';
+import 'package:valorant_documentation/provider/explore_provider.dart';
+import 'package:valorant_documentation/model/service/agent_service.dart';
+import 'package:valorant_documentation/model/service/map_service.dart';
+import 'package:valorant_documentation/model/service/rank_service.dart';
+import 'package:valorant_documentation/model/service/weapons_service.dart';
 
 void main() {
   Gemini.init(apiKey: geiminiKey);
@@ -45,7 +45,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => ExploreService(),
+          create: (context) => PLayerCardService(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ExploreProvider(),
         ),
         ChangeNotifierProvider(
           create: (context) => AgentsService(),
@@ -61,9 +64,6 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => BottomNavigatorProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => PLayerCardService(),
         ),
         ChangeNotifierProvider(
           create: (context) => GeminiService(),

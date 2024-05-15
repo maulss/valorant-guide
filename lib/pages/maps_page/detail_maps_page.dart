@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
-import 'package:valorant_documentation/service/map_service.dart';
+import 'package:valorant_documentation/model/service/map_service.dart';
 
 class DetailMapsPage extends StatefulWidget {
   const DetailMapsPage({super.key});

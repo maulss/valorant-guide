@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
-import 'package:valorant_documentation/service/gemini_service.dart';
+import 'package:valorant_documentation/model/service/gemini_service.dart';
 
 class GeminiAiPage extends StatefulWidget {
   GeminiAiPage({super.key});

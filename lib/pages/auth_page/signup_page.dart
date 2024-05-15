@@ -4,8 +4,8 @@ import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 import 'package:valorant_documentation/provider/form_provider.dart';
 import 'package:valorant_documentation/utils/shared_pref.dart';
-import 'package:valorant_documentation/widgets/button_custom_widget.dart';
-import 'package:valorant_documentation/widgets/form_widget.dart';
+import 'package:valorant_documentation/pages/widgets/button_custom_widget.dart';
+import 'package:valorant_documentation/pages/widgets/form_widget.dart';
 
 // ignore: must_be_immutable
 class SignUpPage extends StatefulWidget {

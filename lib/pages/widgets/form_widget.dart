@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 
-import '../constant/font_style_constant.dart';
+import '../../constant/font_style_constant.dart';
 
 class FormWidget extends StatelessWidget {
   const FormWidget({

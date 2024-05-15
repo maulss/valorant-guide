@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/provider/bottom_navigator_provider.dart';
 
-import '../constant/color_constant.dart';
+import '../../constant/color_constant.dart';
 
 class BottomNavigations extends StatelessWidget {
   const BottomNavigations({super.key});

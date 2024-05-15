@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 
-import 'package:valorant_documentation/service/explore_service.dart';
-import 'package:valorant_documentation/widgets/form_widget.dart';
+import 'package:valorant_documentation/provider/explore_provider.dart';
+import 'package:valorant_documentation/pages/widgets/form_widget.dart';
 
 // ignore: must_be_immutable
 class ExplorePage extends StatelessWidget {
@@ -29,7 +29,7 @@ class ExplorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final exploreService = Provider.of<ExploreService>(context);
+    final exploreService = Provider.of<ExploreProvider>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

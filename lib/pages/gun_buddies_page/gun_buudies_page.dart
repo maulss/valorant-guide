@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
-import 'package:valorant_documentation/service/gun_buddies_service.dart';
+import 'package:valorant_documentation/model/service/gun_buddies_service.dart';
 
 class GunBuddiesPage extends StatefulWidget {
   const GunBuddiesPage({super.key});

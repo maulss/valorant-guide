@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
-import 'package:valorant_documentation/service/rank_service.dart';
+import 'package:valorant_documentation/model/service/rank_service.dart';
 
-import 'package:valorant_documentation/widgets/rank_widget.dart';
+import 'package:valorant_documentation/pages/widgets/rank_widget.dart';
 
 class RanksPage extends StatefulWidget {
   const RanksPage({super.key});

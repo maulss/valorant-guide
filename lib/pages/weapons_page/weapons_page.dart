@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 import 'package:valorant_documentation/pages/weapons_page/meele_page.dart';
-import 'package:valorant_documentation/service/weapons_service.dart';
-import 'package:valorant_documentation/widgets/form_widget.dart';
-import 'package:valorant_documentation/widgets/list_container_widget.dart';
+import 'package:valorant_documentation/model/service/weapons_service.dart';
+import 'package:valorant_documentation/pages/widgets/form_widget.dart';
+import 'package:valorant_documentation/pages/widgets/list_container_widget.dart';
 
 class WeaponsPage extends StatefulWidget {
   const WeaponsPage({super.key});

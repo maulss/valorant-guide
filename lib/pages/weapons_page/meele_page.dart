@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
-import 'package:valorant_documentation/service/weapons_service.dart';
+import 'package:valorant_documentation/model/service/weapons_service.dart';
 
 class MeleePage extends StatelessWidget {
   const MeleePage({super.key});

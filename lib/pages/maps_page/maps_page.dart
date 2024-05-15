@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
-import 'package:valorant_documentation/service/map_service.dart';
-import 'package:valorant_documentation/widgets/form_widget.dart';
-import 'package:valorant_documentation/widgets/list_container_widget.dart';
+import 'package:valorant_documentation/model/service/map_service.dart';
+import 'package:valorant_documentation/pages/widgets/form_widget.dart';
+import 'package:valorant_documentation/pages/widgets/list_container_widget.dart';
 
 class MapsPage extends StatefulWidget {
   const MapsPage({super.key});

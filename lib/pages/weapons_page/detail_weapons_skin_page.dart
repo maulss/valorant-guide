@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:valorant_documentation/service/weapons_service.dart';
+import 'package:valorant_documentation/model/service/weapons_service.dart';
 
 import 'package:video_player/video_player.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';

@@ -20,7 +20,6 @@ class PLayerCardService extends ChangeNotifier {
           await Dio().get("https://valorant-api.com/v1/playercards");
       if (response.statusCode == 200) {
         _playerCard = PlayerCardModel.fromJson(response.data);
-
         notifyListeners();
       }
     } on DioException catch (e) {

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 
-import 'package:valorant_documentation/service/player_card_service.dart';
+import 'package:valorant_documentation/model/service/player_card_service.dart';
 
 class PlayerCardsPage extends StatefulWidget {
   const PlayerCardsPage({super.key});
@@ -13,8 +13,6 @@ class PlayerCardsPage extends StatefulWidget {
 }
 
 class _PlayerCardsPageState extends State<PlayerCardsPage> {
-  int currentIndex = 0;
-
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {

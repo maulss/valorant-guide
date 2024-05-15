@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:valorant_documentation/constant/color_constant.dart';
 import 'package:valorant_documentation/constant/font_style_constant.dart';
 
-import 'package:valorant_documentation/service/agent_service.dart';
-import 'package:valorant_documentation/widgets/form_widget.dart';
+import 'package:valorant_documentation/model/service/agent_service.dart';
+import 'package:valorant_documentation/pages/widgets/form_widget.dart';
 
 class AgentsPage extends StatefulWidget {
   const AgentsPage({super.key});

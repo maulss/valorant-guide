@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ExploreService with ChangeNotifier {
+class ExploreProvider with ChangeNotifier {
   final List<String> _nameList = [
     "Agents",
     "Weapons",
@@ -10,7 +10,7 @@ class ExploreService with ChangeNotifier {
     "Gun\nBuddies"
   ];
 
-  ExploreService() {
+  ExploreProvider() {
     _filteredList = _nameList;
   }
 
