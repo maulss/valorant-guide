@@ -3,14 +3,14 @@
 Organized by Altera Academy - Independent Campus Batch 6
 ![alt text](image-2.png)
 # About Valorant Guide 
-🔫 Valorant Guide: Panduan Terbaik untuk Meningkatkan Skill Bermain! 🔫
+🔫 Valorant Guide: Panduan Terbaik untuk Meningkatkan Skill Bermain! 🔫<br>
 
-Valorant Guide adalah aplikasi panduan yang dirancang khusus untuk membantu pemain game Valorant mencapai potensi maksimal mereka. Dengan aplikasi ini, Anda akan mendapatkan:
+Valorant Guide adalah aplikasi panduan yang dirancang khusus untuk membantu pemain game Valorant mencapai potensi maksimal mereka. Dengan aplikasi ini, Anda akan mendapatkan:<br>
 
-📚 Informasi Mendalam: Pelajari semua tentang agen, senjata, dan peta yang ada di game Valorant.
-🎯 Strategi dan Tips: Pahami peran dan strategi terbaik untuk setiap agen dan senjata di berbagai peta.
-🛡️ Peningkatan Kemampuan: Temukan gaya bermain yang paling cocok untuk Anda dan kuasai permainan dengan lebih baik.
-🌐 Fitur Lengkap: Nikmati fitur-fitur tambahan yang akan membuat Anda menjadi pemain yang lebih unggul di setiap pertandingan.
+📚 Informasi Mendalam: Pelajari semua tentang agen, senjata, dan peta yang ada di game Valorant.<br>
+🎯 Strategi dan Tips: Pahami peran dan strategi terbaik untuk setiap agen dan senjata di berbagai peta.<br>
+🛡️ Peningkatan Kemampuan: Temukan gaya bermain yang paling cocok untuk Anda dan kuasai permainan dengan lebih baik.<br>
+🌐 Fitur Lengkap: Nikmati fitur-fitur tambahan yang akan membuat Anda menjadi pemain yang lebih unggul di setiap pertandingan.<br>
 
 Jadilah pemain terbaik di tim Anda dan dominasi setiap pertandingan dengan Valorant Guide!
 
