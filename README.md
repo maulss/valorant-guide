@@ -15,11 +15,19 @@ Valorant Guide adalah aplikasi panduan yang dirancang khusus untuk membantu pema
 Jadilah pemain terbaik di tim Anda dan dominasi setiap pertandingan dengan Valorant Guide!
 
 # Valorant Guide Feature
-🔍 Fitur Unggulan di Aplikasi Valorant Guide: 🔍
+🔍 **Fitur Unggulan di Aplikasi Valorant Guide:** 🔍  
+🌟 **Eksplorasi Lengkap:**  
+Temukan daftar lengkap agen, peta, senjata, dan peringkat yang tersedia.  
 
-🌟 Eksplorasi Lengkap: Temukan daftar lengkap agen, peta, senjata, dan peringkat yang tersedia.
-📖 Informasi Mendalam: Dapatkan detail rinci tentang setiap agen, peta, dan senjata untuk meningkatkan strategi permainan Anda.
-🔎 Pencarian Cepat: Cari dengan mudah semua informasi yang Anda butuhkan hanya dalam beberapa klik.
-🔐 Akses Aman: Login dan daftar dengan mudah untuk pengalaman yang dipersonalisasi.
-🤖 Analisis Cerdas: Manfaatkan analisis gameplay berbasis AI untuk mengasah kemampuan dan strategi Anda.
+📖 **Informasi Mendalam:**  
+Dapatkan detail rinci tentang setiap agen, peta, dan senjata untuk meningkatkan strategi permainan Anda.  
+
+🔎 **Pencarian Cepat:**  
+Cari dengan mudah semua informasi yang Anda butuhkan hanya dalam beberapa klik.  
+
+🔐 **Akses Aman:**  
+Login dan daftar dengan mudah untuk pengalaman yang dipersonalisasi.  
+
+🤖 **Analisis Cerdas:**  
+Manfaatkan analisis gameplay berbasis AI untuk mengasah kemampuan dan strategi Anda.
 
