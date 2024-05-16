@@ -1,7 +1,8 @@
 # Valorant Guide 
 ✨ Mini Project Mobile Engineer with Flutter ✨<br>
 Organized by Altera Academy - Independent Campus Batch 6
-![alt text](image-2.png)
+![alt text](image-2.png)<br>
+Untuk melihat desain, kunjungi [sumber](https://www.figma.com/design/JBP4NHKcsr1yz7Ck3nBPOG/Valorant---Game-Guide-App-(Community)?node-id=0-1&t=ayDJ2TIfZg8FkmPg-0).
 # About Valorant Guide 
 🔫 Valorant Guide: Panduan Terbaik untuk Meningkatkan Skill Bermain! 🔫<br>
 
