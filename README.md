@@ -1,6 +1,6 @@
 # Valorant Guide 
-✨ Mini Project Mobile Engineer with Flutter ✨
-Organized by Altera Academy - Independent Campus Batch 6
+**✨ Mini Project Mobile Engineer with Flutter ✨**
+**Organized by Altera Academy - Independent Campus Batch 6**
 ![alt text](image-2.png)
 # About Valorant Guide 
 🔫 Valorant Guide: Panduan Terbaik untuk Meningkatkan Skill Bermain! 🔫
